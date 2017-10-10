@@ -14,11 +14,10 @@ buildscript {
     }
 }
 apply plugin: 'org.kordamp.gradle.markdown'
-apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven'
 apply from: 'version.gradle'
 
-group = 'com.github.Nemo-Bryant'
+group = 'com.github.nemobryant'
 
 allprojects {
 	apply plugin: 'java'
@@ -518,6 +517,10 @@ task integrationTest {
 
 task omemoSignalIntTest {
 	dependsOn project(':smack-omemo-signal-integration-test').tasks.run
+}
+
+task printJavaHome{
+    println System.getenv("ANDROID_HOME")
 }
 
 def getGitCommit() {
