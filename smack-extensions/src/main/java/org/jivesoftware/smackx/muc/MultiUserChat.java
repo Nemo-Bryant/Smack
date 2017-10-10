@@ -341,13 +341,16 @@ public class MultiUserChat {
         // Wait for a presence packet back from the server.
         // @formatter:off
         StanzaFilter responseFilter = new AndFilter(StanzaTypeFilter.PRESENCE,
-                        new OrFilter(
+                        new AndFilter(FromMatchesFilter.createFull(joinPresence.getTo()), new StanzaIdFilter(joinPresence), PresenceTypeFilter.ERROR)
+                        /*
+                            群组不广播Presence，所以当用户加入群组后不会收到状态为110的反馈Presence包，故修改源码
+                            new OrFilter(
                             // We use a bare JID filter for positive responses, since the MUC service/room may rewrite the nickname.
                             new AndFilter(FromMatchesFilter.createBare(getRoom()), MUCUserStatusCodeFilter.STATUS_110_PRESENCE_TO_SELF),
                             // In case there is an error reply, we match on an error presence with the same stanza id and from the full
                             // JID we send the join presence to.
                             new AndFilter(FromMatchesFilter.createFull(joinPresence.getTo()), new StanzaIdFilter(joinPresence), PresenceTypeFilter.ERROR)
-                        )
+                        ) */
                     );
         // @formatter:on
         Presence presence;
