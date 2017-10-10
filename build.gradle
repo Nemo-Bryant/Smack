@@ -11,10 +11,10 @@ buildscript {
 		classpath 'org.kordamp.gradle:clirr-gradle-plugin:0.2.2'
 		classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.3.1"
 		classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.10'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 apply plugin: 'org.kordamp.gradle.markdown'
+apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply from: 'version.gradle'
 
