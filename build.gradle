@@ -14,7 +14,8 @@ buildscript {
     }
 }
 apply plugin: 'org.kordamp.gradle.markdown'
-apply plugin: 'maven'
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 apply from: 'version.gradle'
 
 group = 'com.github.nemobryant'
